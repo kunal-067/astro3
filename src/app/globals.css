@@ -1,4 +1,4 @@
-@import "tailwindcss";
+/* @import "tailwindcss";
 
 :root {
   --background: #ffffff;
@@ -23,4 +23,116 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+} */
+
+
+
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #111827;
+
+  --card: #ffffff;
+  --card-foreground: #111827;
+
+  --primary: #ff4fa1;
+  --secondary: #d946ef;
+  --accent: #fbbf24;
+
+  --muted: #f3f4f6;
+
+  --border: #e5e7eb;
+}
+
+.dark {
+  --background: #0f0524;
+  --foreground: #f8fafc;
+
+  --card: #14092d;
+  --card-foreground: #f8fafc;
+
+  --primary: #ff4fa1;
+  --secondary: #d946ef;
+  --accent: #fbbf24;
+
+  --muted: #1a1035;
+
+  --border: rgba(255,255,255,0.08);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background: var(--background);
+  color: var(--foreground);
+  overflow-x: hidden;
+}
+
+/* scroll bar utilities */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    to bottom,
+    #ff4fa1,
+    #d946ef
+  );
+  border-radius: 999px;
+}
+
+
+/* glow utilities */
+.glass {
+  backdrop-filter: blur(20px);
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.dark .glass {
+  background: rgba(255,255,255,0.04);
+}
+
+/* glow utilities */
+.pink-glow {
+  box-shadow:
+    0 0 20px rgba(255,79,161,.4),
+    0 0 60px rgba(255,79,161,.2);
+}
+.gold-glow {
+  box-shadow:
+    0 0 20px rgba(251,191,36,.3),
+    0 0 50px rgba(251,191,36,.15);
+}
+
+/* gradient text */
+.gradient-text {
+  background: linear-gradient(
+    135deg,
+    #ff4fa1,
+    #d946ef,
+    #fbbf24
+  );
+
+-webkit-background-clip: text;
+  color: transparent;
+}
+
+/* animated bg */
+.hero-gradient {
+  background:
+  radial-gradient(
+      circle at top left,
+      rgba(255,79,161,.25),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at top right,
+      rgba(217,70,239,.2),
+      transparent 40%
+    );
 }
