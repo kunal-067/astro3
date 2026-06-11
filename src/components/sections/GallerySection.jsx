@@ -1,14 +1,15 @@
 'use client'
 import React, { useState } from 'react'
-import {SectionBadge, SectionHeading, Section} from "@/components/ui";
-import {GALLERY_ITEMS} from "@/lib/data"
+import { SectionBadge, SectionHeading, Section } from "@/components/ui";
+import { GALLERY_ITEMS } from "@/lib/data"
+import { GalleryModal } from '../shared/Modals';
 const GallerySection = () => {
   const [galleryModal, setGalleryModal] = useState(null);
   const [galleryIdx, setGalleryIdx] = useState(0);
 
   return (
     <>
-     <Section id="gallery">
+      <Section id="gallery">
         <div className="text-center mb-14">
           <SectionBadge>Gallery</SectionBadge>
           <SectionHeading title="Sacred Moments & Ceremonies" subtitle="A glimpse into the spiritual world of Acharya Ji." />
@@ -42,8 +43,8 @@ const GallerySection = () => {
         </div>
       </Section>
 
-<GallerySection galleryIdx={galleryIdx} galleryModal={galleryModal} setGalleryIdx={setGalleryIdx} setGalleryModal={setGalleryModal}/>
-      </>
+      <GalleryModal galleryIdx={galleryIdx} galleryModal={galleryModal} setGalleryIdx={setGalleryIdx} setGalleryModal={setGalleryModal} />
+    </>
   )
 }
 

@@ -53,7 +53,7 @@ export default function Navbar() {
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden lg:flex items-center gap-8">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
@@ -66,11 +66,12 @@ export default function Navbar() {
             </div>
 
             {/* Desktop WhatsApp */}
+            <div className="flex gap-8">
             <a
               href={WA_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden md:flex items-center gap-2 px-5 py-2.5 rounded-full bg-linear-to-r from-pink-500 to-fuchsia-600 text-white text-sm font-semibold shadow-lg shadow-pink-500/30 hover:shadow-pink-500/50 transition-shadow"
+              className="hidden justify-self-end md:flex items-center gap-2 px-5 py-2.5 rounded-full bg-linear-to-r from-pink-500 to-fuchsia-600 text-white text-sm font-semibold shadow-lg shadow-pink-500/30 hover:shadow-pink-500/50 transition-shadow"
             >
               <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
               WhatsApp
@@ -79,10 +80,11 @@ export default function Navbar() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(true)}
-              className="md:hidden text-gray-900 dark:text-white"
+              className="lg:hidden text-gray-900 dark:text-white"
             >
               <Menu size={26} />
             </button>
+            </div>
           </div>
         </div>
       </nav>
@@ -90,7 +92,7 @@ export default function Navbar() {
       {/* Overlay */}
       <div
         onClick={() => setIsOpen(false)}
-        className={`fixed inset-0 bg-black/50 z-[60] transition-opacity duration-300 md:hidden ${
+        className={`fixed inset-0 bg-black/50 z-60 transition-opacity duration-300 lg:hidden ${
           isOpen
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
@@ -99,7 +101,7 @@ export default function Navbar() {
 
       {/* Mobile Sidebar */}
       <div
-        className={`fixed top-0 right-0 h-screen w-[280px] bg-[#F5F0EB] dark:bg-zinc-950 z-[70] shadow-2xl transition-transform duration-300 md:hidden ${
+        className={`fixed top-0 right-0 h-screen w-70 bg-[#F5F0EB] dark:bg-zinc-950 z-70 shadow-2xl transition-transform duration-300 lg:hidden ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >

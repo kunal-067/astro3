@@ -11,8 +11,9 @@ export const AboutSection = () => {
             <div className="relative aspect-4/5 max-w-sm mx-auto rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
               <div className="w-full h-full bg-linear-to-br from-pink-900 via-purple-900 to-violet-900 flex items-center justify-center">
                 <div className="text-center">
-                  <div className="text-7xl mb-4">🌟</div>
-                  <p className="text-white/70 font-semibold" style={{ fontFamily: "var(--font-display)" }}>Acharya Ji Profile</p>
+                  {/* <div className="text-7xl mb-4">🌟</div>
+                  <p className="text-white/70 font-semibold" style={{ fontFamily: "var(--font-display)" }}>Acharya Ji Profile</p> */}
+                  <img src="./astrologer2-bgr.png" alt="Image" />
                 </div>
               </div>
             </div>

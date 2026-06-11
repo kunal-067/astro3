@@ -24,7 +24,7 @@ function FAQItem({ q, a }) {
 }
 
 
-const FAQSection = () => {
+const FAQSection = ({faqs = FAQS}) => {
     return (
         <div id="faq" className="py-20 px-4 bg-gray-50 dark:bg-white/2 border-y border-gray-200/50 dark:border-white/5">
             <div className="max-w-3xl mx-auto">
@@ -32,7 +32,7 @@ const FAQSection = () => {
                     <SectionBadge>FAQ</SectionBadge>
                     <SectionHeading title="Questions & Answers" subtitle="Everything you need to know before reaching out." />
                 </div>
-                {FAQS.map((f, i) => <FAQItem key={i} q={f.q} a={f.a} />)}
+                {faqs.map((f, i) => <FAQItem key={i} q={f.q} a={f.a} />)}
             </div>
         </div>
     )

@@ -1,11 +1,22 @@
 'use client'
-import React, { useRef, useState, useEffect } from 'react'
+import React, { useRef, useEffect } from 'react'
 import { WA_LINK } from '@/lib/constants';
 import { Stars } from '../ui';
 import { MarqueeReviews } from './TrustBar';
 
 const HeroSection = () => {
-  // Particle canvas
+ 
+  return (
+   <>
+   <Hero1 className={`hidden md:block`}/>
+   <Hero2 className={`block md:hidden`}/>
+   </>
+  )
+}
+
+
+const Hero1 = ({ className }) => {
+   // Particle canvas
   const canvasRef = useRef(null);
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -43,13 +54,13 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <div className="relative min-h-screen flex items-center dark:bg-none overflow-hidden">
+    <div className={`relative min-h-screen flex items-center dark:bg-none overflow-hidden ${className}`}>
       {/* Glow orbs */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-pink-500/15 dark:bg-pink-500/20 blur-3xl animate-glow pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/3 w-80 h-80 rounded-full bg-purple-500/10 dark:bg-purple-500/20 blur-3xl animate-glow pointer-events-none" style={{ animationDelay: "1.5s" }} />
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none opacity-50 dark:opacity-100" />
 
-      <div className="relative max-w-7xl mx-auto px-4 pt-28 pb-16 grid lg:grid-cols-2 gap-12 items-center w-full">
+      <div className={`relative max-w-7xl mx-auto px-4 pt-28 pb-16 grid lg:grid-cols-2 gap-12 items-center w-full`}>
         {/* Left */}
         <div>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-linear-to-r from-pink-500/15 to-purple-500/15 dark:from-pink-500/20 dark:to-purple-500/20 border border-pink-400/30 text-pink-500 dark:text-pink-300 text-xs font-semibold uppercase tracking-widest mb-6">
@@ -150,7 +161,6 @@ const HeroSection = () => {
   )
 }
 
-
 const serviceCards = [
   {
     label: "Chat with Astrologer",
@@ -187,15 +197,14 @@ const serviceCards = [
     ),
   },
 ];
-
-export const Hero2 = () => {
+export const Hero2 = ({ className }) => {
   return (
-    <div className="bg-[#F5F0EB] dark:bg-[#0F0A1F] font-sans">
+    <div className={`bg-[#F5F0EB] dark:bg-[#0F0A1F] font-sans px-4 ${className}`}>
       {/* Hero Banner */}
-      <Hero23 />
+      <HeroBanner className={'pt-24'} />
 
       {/* Service Cards */}
-      <div className="mx-auto mt-6 max-w-7xl px-4 pb-2">
+      <div className="mx-auto mt-6 max-w-7xl pb-2">
         <div className="grid grid-cols-2 gap-2 lg:grid-cols-4">
           {serviceCards.map((card, i) => (
             <button
@@ -214,18 +223,16 @@ export const Hero2 = () => {
         </div>
       </div>
 
-      <div className='px-3 overflow-hidden'>
+      <div className='overflow-hidden'>
         <MarqueeReviews />
       </div>
     </div>
   );
 };
-
-
-export const Hero23 = () => {
+export const HeroBanner = ({ className }) => {
   return (
-    <section className="pt-24 px-4">
-      <div className="relative rounded-4xl bg-linear-to-br from-[#1A0F39] via-[#2B1157] to-[#521457]">
+    <section className={`${className}`}>
+      <div className="relative max-w-7xl mx-auto rounded-4xl bg-linear-to-br from-[#1A0F39] via-[#2B1157] to-[#521457]">
         {/* Glow */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(255,255,255,0.08),transparent_40%)]" />
 
@@ -269,45 +276,5 @@ export const Hero23 = () => {
   );
 };
 
-export function ConnectSection() {
-  return (
-    <section className="py-10">
-      <div className="max-w-7xl mx-auto px-4">
-        {/* Heading */}
-        <h2
-          className="mb-8 text-4xl font-semibold text-[#5A4A93] dark:text-[#C9A4FF] md:text-5xl"
-          style={{ fontFamily: "var(--font-display)" }}
-        >
-          Connect with Us
-        </h2>
-
-        {/* Cards */}
-        <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-          {services.map((item) => {
-            const Icon = item.icon;
-
-            return (
-              <button
-                key={item.title}
-                className="group flex min-h-[170px] flex-col items-center justify-center gap-5 rounded-3xl border border-[#F3B08A] bg-white px-4 py-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-[#5D3F8F] dark:bg-[#181226]"
-              >
-                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#C9B6FF] dark:bg-[#4E3B83]">
-                  <Icon
-                    size={28}
-                    className="text-[#5A3E91] dark:text-[#D7C5FF]"
-                  />
-                </div>
-
-                <span className="text-center text-lg font-medium leading-tight text-[#100329] dark:text-white md:text-2xl">
-                  {item.title}
-                </span>
-              </button>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 export default HeroSection;

@@ -36,7 +36,7 @@ export function MarqueeReviews({ onCardClick }) {
 }
 const TrustBar = () => {
     return (
-        <div id="testimonials" className="hidden py-16 bg-gray-50 dark:bg-white/2 border-y border-gray-200/50 dark:border-white/5 overflow-hidden">
+        <div id="testimonials" className="hidden md:block py-16 bg-gray-50 dark:bg-white/2 border-y border-gray-200/50 dark:border-white/5 overflow-hidden">
             <div className="max-w-7xl mx-auto px-4">
                 <div className="text-center mb-10">
                     <SectionBadge>Real Results</SectionBadge>

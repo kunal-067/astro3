@@ -1,6 +1,6 @@
 import React from 'react';
-import {SectionBadge, SectionHeading, Stars} from "../ui";
-import {REVIEWS} from "@/lib/data";
+import { SectionBadge, SectionHeading, Stars } from "../ui";
+import { REVIEWS } from "@/lib/data";
 import MobileCarousel from '../ui/MobileCarousel';
 // ── Shared card ───────────────────────────────────────────────────────────────
 const ReviewCard = ({ r }) => (
@@ -10,7 +10,7 @@ const ReviewCard = ({ r }) => (
       "{r.text}"
     </p>
     <div className="mt-5 flex items-center gap-3">
-      <div className="w-9 h-9 rounded-full bg-gradient-to-br from-pink-400 to-purple-500 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">
+      <div className="w-9 h-9 rounded-full bg-linear-to-br from-pink-400 to-purple-500 flex items-center justify-center text-white text-sm font-bold shrink-0">
         {r.name[0]}
       </div>
       <div>
@@ -22,7 +22,7 @@ const ReviewCard = ({ r }) => (
 );
 
 // ── Section ───────────────────────────────────────────────────────────────────
-export const TextTestimonials = () => (
+export const TextTestimonials = ({ reviews = REVIEWS }) => (
   <div className="py-20 px-4 bg-gray-50 dark:bg-white/2 border-y border-gray-200/50 dark:border-white/5">
     <div className="max-w-7xl mx-auto">
 
@@ -38,7 +38,7 @@ export const TextTestimonials = () => (
       */}
       <div className="md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-5">
         <MobileCarousel autoInterval={4500}>
-          {REVIEWS.map((r, i) => (
+          {reviews.map((r, i) => (
             <ReviewCard key={i} r={r} />
           ))}
         </MobileCarousel>
