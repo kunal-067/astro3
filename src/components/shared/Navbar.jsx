@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { Menu, X, MessageCircle } from "lucide-react";
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
+import { WA_LINK } from "@/lib/constants";
 
 const navLinks = [
   {
@@ -31,220 +32,106 @@ const navLinks = [
 ];
 
 export default function Navbar() {
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 30);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () =>
-      window.removeEventListener(
-        "scroll",
-        handleScroll
-      );
-  }, []);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
-      <header
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-          scrolled
-            ? "backdrop-blur-xl border-b border-white/10 bg-white/70 dark:bg-[#0f0524]/70"
-            : "bg-transparent"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-5 lg:px-8">
-          <div className="h-20 flex items-center justify-between">
-
+      <nav className="fixed top-0.5 left-0 right-0 z-50 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="mt-4 flex items-center justify-between px-6 py-3 rounded-2xl glass border dark:border-white/10 border-gray-200/60 shadow-xl shadow-black/20">
             {/* Logo */}
-
-            <a
-              href="/"
-              className="flex items-center gap-2"
-            >
-              <div
-                className="
-                  h-10
-                  w-10
-                  rounded-full
-                  bg-gradient-to-r
-                  from-pink-500
-                  via-fuchsia-500
-                  to-yellow-400
-                  flex
-                  items-center
-                  justify-center
-                  text-white
-                  font-bold
-                "
-              >
-                AJ
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-full bg-linear-to-br from-pink-500 to-purple-600 flex items-center justify-center text-white text-xs font-bold">
+                A
               </div>
-
-              <div>
-                <p className="font-semibold text-lg">
-                  Acharya Ji
-                </p>
-
-                <p className="text-xs opacity-70">
-                  London's Trusted Healer
-                </p>
-              </div>
-            </a>
-
-            {/* Desktop Menu */}
-
-            <nav className="hidden lg:flex items-center gap-8">
-              {navLinks.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="
-                    text-sm
-                    font-medium
-                    hover:text-pink-500
-                    transition-colors
-                  "
-                >
-                  {item.name}
-                </a>
-              ))}
-            </nav>
-
-            {/* CTA */}
-
-            <div className="hidden lg:flex">
-              <a
-                href="https://wa.me/447000000000"
-                target="_blank"
-                rel="noreferrer"
-                className="
-                  flex
-                  items-center
-                  gap-2
-                  rounded-full
-                  px-5
-                  py-3
-                  text-white
-                  text-sm
-                  font-semibold
-                  bg-gradient-to-r
-                  from-pink-500
-                  to-fuchsia-600
-                  hover:scale-105
-                  transition-all
-                  duration-300
-                  shadow-lg
-                "
+              <span
+                className="font-bold text-lg text-gray-900 dark:text-white"
+                style={{ fontFamily: "var(--font-display)" }}
               >
-                <MessageCircle size={18} />
-                WhatsApp Now
-              </a>
+                Acharya Ji
+              </span>
             </div>
 
-            {/* Mobile Button */}
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center gap-8">
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="text-sm text-gray-600 dark:text-gray-300 hover:text-pink-500 transition-colors font-medium"
+                >
+                  {link.name}
+                </a>
+              ))}
+            </div>
 
-            <button
-              className="lg:hidden"
-              onClick={() =>
-                setMobileOpen(!mobileOpen)
-              }
+            {/* Desktop WhatsApp */}
+            <a
+              href={WA_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden md:flex items-center gap-2 px-5 py-2.5 rounded-full bg-linear-to-r from-pink-500 to-fuchsia-600 text-white text-sm font-semibold shadow-lg shadow-pink-500/30 hover:shadow-pink-500/50 transition-shadow"
             >
-              {mobileOpen ? (
-                <X size={28} />
-              ) : (
-                <Menu size={28} />
-              )}
+              <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+              WhatsApp
+            </a>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsOpen(true)}
+              className="md:hidden text-gray-900 dark:text-white"
+            >
+              <Menu size={26} />
             </button>
           </div>
         </div>
-      </header>
+      </nav>
 
-      {/* Mobile Menu */}
-
+      {/* Overlay */}
       <div
-        className={`
-          fixed
-          inset-0
-          z-40
-          lg:hidden
-          transition-all
-          duration-300
-          ${
-            mobileOpen
-              ? "opacity-100 visible"
-              : "opacity-0 invisible"
-          }
-        `}
+        onClick={() => setIsOpen(false)}
+        className={`fixed inset-0 bg-black/50 z-[60] transition-opacity duration-300 md:hidden ${
+          isOpen
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
+        }`}
+      />
+
+      {/* Mobile Sidebar */}
+      <div
+        className={`fixed top-0 right-0 h-screen w-[280px] bg-[#F5F0EB] dark:bg-zinc-950 z-[70] shadow-2xl transition-transform duration-300 md:hidden ${
+          isOpen ? "translate-x-0" : "translate-x-full"
+        }`}
       >
-        <div
-          className="
-            absolute
-            inset-0
-            bg-black/60
-            backdrop-blur-md
-          "
-          onClick={() =>
-            setMobileOpen(false)
-          }
-        />
+        <div className="flex items-center justify-between p-5 border-b border-gray-200 dark:border-white/10">
+          <div className="font-bold text-lg">Menu</div>
 
-        <div
-          className="
-            absolute
-            right-0
-            top-0
-            h-full
-            w-[85%]
-            max-w-sm
-            bg-white
-            dark:bg-[#0f0524]
-            p-6
-            shadow-2xl
-          "
-        >
-          <div className="mt-24 flex flex-col gap-6">
+          <button onClick={() => setIsOpen(false)}>
+            <X size={24} />
+          </button>
+        </div>
 
-            {navLinks.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                onClick={() =>
-                  setMobileOpen(false)
-                }
-                className="
-                  text-lg
-                  font-medium
-                  hover:text-pink-500
-                "
-              >
-                {item.name}
-              </a>
-            ))}
-
+        <div className="flex flex-col p-5">
+          {navLinks.map((link) => (
             <a
-              href="https://wa.me/447000000000"
-              target="_blank"
-              rel="noreferrer"
-              className="
-                mt-6
-                rounded-full
-                bg-gradient-to-r
-                from-pink-500
-                to-fuchsia-600
-                text-white
-                py-4
-                text-center
-                font-semibold
-              "
+              key={link.name}
+              href={link.href}
+              onClick={() => setIsOpen(false)}
+              className="py-4 border-b border-gray-100 dark:border-white/10 text-gray-700 dark:text-gray-300 hover:text-pink-500 font-medium"
             >
-              WhatsApp Consultation
+              {link.name}
             </a>
-          </div>
+          ))}
+
+          <a
+            href={WA_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-linear-to-r from-pink-500 to-fuchsia-600 text-white font-semibold"
+          >
+            <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+            WhatsApp
+          </a>
         </div>
       </div>
     </>
