@@ -34,7 +34,9 @@ const VideoTestimonials = () => {
                       <path d="M8 5v14l11-7z" />
                     </svg>
                   </div>
-                  <p className="mt-3 text-white text-xs text-center px-4 font-medium leading-snug">{v.title}</p>
+                  <p className="mt-3 text-white text-xs text-center px-2 font-medium leading-snug line-clamp-1 sm:line-clamp-none">
+                    {v.title}
+                  </p>
                 </div>
               </button>
             ))}
@@ -42,7 +44,7 @@ const VideoTestimonials = () => {
         </div>
       </Section>
 
-      <VideoModal videoModal={videoModal} setVideoModal={setVideoModal}/>
+      <VideoModal videoModal={videoModal} setVideoModal={setVideoModal} />
     </>
   )
 }
