@@ -24,12 +24,12 @@ export function FeaturedOn() {
           <Sparkles className="h-4 w-4 text-violet-500" />
         </div>
 
-        <div className="rounded-3xl border border-orange-200/50 bg-white/60 p-5 backdrop-blur-sm dark:border-white/10 dark:bg-white/[0.03]">
+        <div className="rounded-3xl border border-orange-200/50 bg-white/60 p-5 backdrop-blur-sm dark:border-white/10 dark:bg-white/3">
           <div className="grid grid-cols-3 gap-4 md:grid-cols-6">
             {logos.map((logo) => (
               <div
                 key={logo.name}
-                className="flex h-20 items-center justify-center rounded-2xl transition-all duration-300 hover:bg-black/[0.03] dark:hover:bg-white/[0.03]"
+                className="flex h-20 items-center justify-center rounded-2xl transition-all duration-300 hover:bg-black/3 dark:hover:bg-white/3"
               >
                 <img
                   src={logo.svg}

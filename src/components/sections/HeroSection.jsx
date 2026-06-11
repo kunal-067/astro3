@@ -209,7 +209,7 @@ export const Hero2 = ({ className }) => {
           {serviceCards.map((card, i) => (
             <button
               key={i}
-              className="group flex min-h-29 flex-col items-center justify-center gap-3 rounded-2xl border border-[#EDE8E3] bg-white p-4 transition-all duration-200 hover:-translate-y-1 hover:border-violet-400 hover:bg-violet-50 hover:shadow-lg dark:border-white/10 dark:bg-[#181226] dark:hover:border-violet-500 dark:hover:bg-violet-950/30 md:min-h-[170px] md:gap-4 md:p-6"
+              className="group flex min-h-29 flex-col items-center justify-center gap-3 rounded-2xl border border-[#EDE8E3] bg-white p-4 transition-all duration-200 hover:-translate-y-1 hover:border-violet-400 hover:bg-violet-50 hover:shadow-lg dark:border-white/10 dark:bg-[#181226] dark:hover:border-violet-500 dark:hover:bg-violet-950/30 md:min-h-42.5 md:gap-4 md:p-6"
             >
               <div className="flex p-3 items-center justify-center rounded-full bg-[#EDE8F5] text-violet-600 transition-colors group-hover:bg-violet-100 md:h-14 md:w-14">
                 {card.icon}
